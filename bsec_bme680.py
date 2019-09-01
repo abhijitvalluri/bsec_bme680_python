@@ -1,5 +1,5 @@
 import subprocess
-import paho.mqtt.publish as publish
+# import paho.mqtt.publish as publish
 import json
 from statistics import median
 
@@ -49,4 +49,5 @@ for line in iter(proc.stdout.readline, ''):
         Temperature = Temperature + 2
 
         payload = {"IAQ_Accuracy": IAQ_Accuracy,"IAQ": round(IAQ, 1),"Temperature": round(Temperature, 1),"Humidity": round(Humidity, 1),"Pressure": round(Pressure, 1),"Gas": Gas,"Status": Status}
-        publish.single("bme680_wohnzimmer", json.dumps(payload), hostname="localhost")
+        print(payload)
+        # publish.single("bme680_wohnzimmer", json.dumps(payload), hostname="localhost")
