@@ -11,6 +11,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <time.h>
 #include <fcntl.h>
 #include <string.h>
@@ -164,7 +165,7 @@ int64_t get_timestamp_ms()
   struct timespec spec;
   clock_gettime(CLOCK_MONOTONIC, &spec);
 
-  int64_t sys_time_ms = (int64_t)(spec.tv_sec) * (int64_t)1000;
+  int64_t sys_time_ms = (int64_t)(spec.tv_sec) * (int64_t)1000
                         + (int64_t)round(spec.tv_nsec / 1.0e6);
 
   return sys_time_ms;
