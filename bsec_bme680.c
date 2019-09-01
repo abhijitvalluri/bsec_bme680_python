@@ -160,6 +160,8 @@ int64_t get_timestamp_us()
   return system_current_time_us;
 }
 
+
+// AAAAAAAAAAAAARRRRGGGGHHHH!! WHAT THE EFFING HELL??? WHY IS THIS NOT EPOCH TIME???
 int64_t get_timestamp_ms()
 {
   struct timespec spec;
