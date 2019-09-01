@@ -159,6 +159,17 @@ int64_t get_timestamp_us()
   return system_current_time_us;
 }
 
+int64_t get_timestamp_ms()
+{
+  struct timespec spec;
+  clock_gettime(CLOCK_MONOTONIC, &spec);
+
+  int64_t sys_time_ms = (int64_t)(spec.tv_sec) * (int64_t)1000;
+                        + (int64_t)round(spec.tv_nsec / 1.0e6);
+
+  return sys_time_ms;
+}
+
 /*
  * Handling of the ready outputs
  *
@@ -197,7 +208,7 @@ void output_ready(int64_t timestamp, float iaq, uint8_t iaq_accuracy,
   printf(",\"co2_equivalent\": \"%.2f\"", co2_equivalent);
   printf(",\"breath_voc_equivalent\": \"%.2f\"", breath_voc_equivalent);
   printf(",\"status\": \"%d\"", bsec_status);
-  printf(",\"timestamp\": %" PRId64 "}", timestamp);
+  printf(",\"timestamp\": %" PRId64 "}", get_timestamp_ms());
   printf("\r\n");
   fflush(stdout);
 }
