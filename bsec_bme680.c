@@ -26,8 +26,8 @@
 
 /* definitions */
 
-#define DESTZONE "TZ=Europe/Berlin"
-#define temp_offset (5.0f)
+#define DESTZONE "TZ=Europe/London"
+#define temp_offset (5.0f) // TODO: Check if this has to change
 #define sample_rate_mode (BSEC_SAMPLE_RATE_LP)
 
 int g_i2cFid; // I2C Linux device handle
@@ -180,23 +180,23 @@ void output_ready(int64_t timestamp, float iaq, uint8_t iaq_accuracy,
                   float raw_temperature, float raw_humidity, float gas,
                   bsec_library_return_t bsec_status)
 {
-  //int64_t timestamp_s = timestamp / 1000000000;
-  ////int64_t timestamp_ms = timestamp / 1000;
+  int64_t timestamp_s = timestamp / 1000000000;
+  int64_t timestamp_ms = timestamp / 1000;
 
   //time_t t = timestamp_s;
   /*
    * timestamp for localtime only makes sense if get_timestamp_us() uses
    * CLOCK_REALTIME
    */
-  time_t t = time(NULL);
-  struct tm tm = *localtime(&t);
+  //time_t t = time(NULL);
+  //struct tm tm = *localtime(&t);
 
   printf("{\"IAQ_Accuracy\": \"%d\",\"IAQ\":\"%.2f\"", iaq_accuracy, iaq);
   printf(",\"Temperature\": \"%.2f\",\"Humidity\": \"%.2f\",\"Pressure\": \"%.2f\"", temperature, humidity,pressure / 100);
   printf(",\"Gas\": \"%.0f\"", gas);
   printf(",\"Status\": \"%d\"}", bsec_status);
-  //printf(",%" PRId64, timestamp);
-  //printf(",%" PRId64, timestamp_ms);
+  printf(",%" PRId64, timestamp);
+  printf(",%" PRId64, timestamp_ms);
   printf("\r\n");
   fflush(stdout);
 }
