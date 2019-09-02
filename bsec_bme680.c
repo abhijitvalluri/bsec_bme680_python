@@ -161,7 +161,8 @@ int64_t get_timestamp_us()
 }
 
 
-// AAAAAAAAAAAAARRRRGGGGHHHH!! WHAT THE EFFING HELL??? WHY IS THIS NOT EPOCH TIME???
+// CLOCK MONOTONIC returns a timestamp starting from some arbitrary point.
+// So it is not useable as a human readable timestamp but only for measuring time differences.
 int64_t get_timestamp_ms()
 {
   struct timespec spec;
