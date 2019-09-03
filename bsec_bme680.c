@@ -28,7 +28,7 @@
 /* definitions */
 
 #define DESTZONE "TZ=Europe/London"
-#define temp_offset (5.0f) // TODO: Check if this has to change
+#define temp_offset (3.0f) // FIXME: Changed from 5 to 3. See if this is good.
 #define sample_rate_mode (BSEC_SAMPLE_RATE_LP)
 
 int g_i2cFid; // I2C Linux device handle

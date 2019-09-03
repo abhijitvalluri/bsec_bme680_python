@@ -61,9 +61,6 @@ for line in iter(proc.stdout.readline, ''):
         listCO2eq.clear()
         listBreathVOCeq.clear()
 
-        # Temperature Offset
-        Temperature = Temperature + 2
-
         ts = time.time()
         timestamp = datetime.datetime.fromtimestamp(
             ts).strftime('%Y-%m-%d %H:%M:%S')
