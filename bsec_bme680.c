@@ -28,7 +28,7 @@
 /* definitions */
 
 #define DESTZONE "TZ=Europe/London"
-#define temp_offset (3.0f) // FIXME: Changed from 5 to 3. See if this is good.
+#define temp_offset (4.2f) // FIXME: Changed from 5 to 3. See if this is good. Update: 4.2 may be more accurate based on thermostat readings.
 #define sample_rate_mode (BSEC_SAMPLE_RATE_LP)
 
 int g_i2cFid; // I2C Linux device handle
