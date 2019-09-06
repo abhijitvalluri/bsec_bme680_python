@@ -79,4 +79,9 @@ for line in iter(proc.stdout.readline, ''):
             "status": Status
         }
 
-        r = requests.post("https://abhijitvalluri.com/testDash/ingest.php", data=payload)
+        try:
+            r = requests.post("https://abhijitvalluri.com/testDash/ingest.php", data=payload)
+        except requests.exceptions.RequestException as e:
+            print("An Exception occurred! Why? openvpn??")
+            print(e)
+            # continue as usual
