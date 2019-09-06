@@ -62,7 +62,7 @@ for line in iter(proc.stdout.readline, ''):
         listBreathVOCeq.clear()
 
         ts = time.time()
-        timestamp = datetime.datetime.fromtimestamp(
+        timestamp = datetime.datetime.utcfromtimestamp(
             ts).strftime('%Y-%m-%d %H:%M:%S')
 
         payload = {
